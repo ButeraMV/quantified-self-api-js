@@ -1,10 +1,12 @@
 {
   "name": "quantified-self-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "quantified-self",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test mocha test/*-test.js",
+    "start": "nodemon server.js",
+    "debug": "NODE_ENV=test mocha debug test/*-test.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +19,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^4.0.1",
-    "nodemon": "^1.12.5"
+    "nodemon": "^1.12.5",
+    "request": "^2.83.0"
   }
 }
