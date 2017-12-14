@@ -47,7 +47,7 @@ app.post('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
   Meals.addFoodToMeal(request, response)
 })
 
-app.delete('api/v1/meals/:meal_id/foods/:id', function(request, response) {
+app.delete('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
   Meals.deleteFoodFromMeal(request, response)
 })
 
