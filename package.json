@@ -1,7 +1,6 @@
 {
   "name": "quantified-self-api",
   "version": "1.0.0",
-
   "description": "Calorie tracker built in Node",
   "main": "server.js",
   "scripts": {
@@ -21,6 +20,5 @@
     "mocha": "^4.0.1",
     "nodemon": "^1.12.5",
     "request": "^2.83.0"
-
   }
 }

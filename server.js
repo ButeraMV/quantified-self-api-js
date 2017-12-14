@@ -49,7 +49,7 @@ app.post('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
 
 app.delete('api/v1/meals/:meal_id/foods/:id', function(request, response) {
   Meals.deleteFoodFromMeal(request, response)
-
+})
 
 app.get('/api/v1/foods', function(request, response){
   FoodsController.index(request, response)
