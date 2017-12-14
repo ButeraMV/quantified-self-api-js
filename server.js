@@ -4,6 +4,14 @@ var bodyParser = require('body-parser')
 const environment = process.env.NODE_ENV || 'development';
 const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
+
+const Meal = require('./lib/models/meal')
+const Meals = require('./lib/controllers/meals')
+
+app.set('port', process.env.PORT || 3000)
+app.locals.title = 'Quantified Self'
+
+
 const cors = require('cors')
 const FoodsController = require('./lib/controllers/foods')
 
@@ -26,13 +34,22 @@ app.get('/', function(request, response) {
   response.send(app.locals.title)
 })
 
-//app.get('/api/secrets/:id', function(request, response){
-  //SecretController.getSecret(request, response)
-//})
 
-//app.post('/api/secrets', (request, response) => {
-  //SecretController.postSecret(request, response)
-//})
+app.get('/api/v1/meals', function(request, response) {
+  Meals.getMeals(request, response)
+})
+
+app.get('/api/v1/meals/:meal_id/foods', function(request, response) {
+  Meals.getFoodsForMeal(request, response)
+})
+
+app.post('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
+  Meals.addFoodToMeal(request, response)
+})
+
+app.delete('/api/v1/meals/:meal_id/foods/:id', function(request, response) {
+  Meals.deleteFoodFromMeal(request, response)
+})
 
 app.get('/api/v1/foods', function(request, response){
   FoodsController.index(request, response)
@@ -52,6 +69,7 @@ app.patch('/api/v1/foods/:id', (request, response) => {
 
 app.delete('/api/v1/foods/:id', (request, response) => {
   FoodsController.destroy(request, response)
+
 })
 
 if(!module.parent) {
